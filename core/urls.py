@@ -5,69 +5,18 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.shortcuts import redirect
 
-from drf_yasg import openapi
-from drf_yasg.views import get_schema_view
-
-from rest_framework import permissions
-
-
-def redirect_base_to_admin(request):
-    return redirect("admin/")
-
-
-schema_view = get_schema_view(
-    openapi.Info(
-        title="WhatHappenedNews API",
-        default_version="v1",
-        description="whathappenednews backend api",
-        terms_of_service="https://www.google.com/policies/terms/",
-        license=openapi.License(name="BSD License"),
-    ),
-    public=True,
-    permission_classes=(permissions.AllowAny,),
-)
-
 # External packages urls
-urlpatterns = [path("rosetta/", include("rosetta.urls"))]
+urlpatterns = [
+    path("rosetta/", include("rosetta.urls")),
+]
 
 # Custom urls
 urlpatterns += [
-    path("api/users/", include("apps.users.urls")),
-    path("api/events/", include("apps.events.urls")),
-    path("api/anons/", include("apps.anons.urls")),
-    path("api/approvals/", include("apps.approvals.urls")),
-    path("api/chats/", include("apps.chats.urls")),
-    path("api/tasks/", include("apps.planners.urls")),
-    path("api/clients/", include("apps.clients.urls")),
-    path("api/payments/", include("apps.payments.urls")),
-    path("api/cards/", include("apps.cards.urls")),
-    path("api/applications/", include("apps.applications.urls")),
-    path("api/loans/", include("apps.loans.urls")),
-    path("api/borrowers/", include("apps.borrowers.urls")),
-    # path("api/assistants/", include("apps.assistants.urls")),
-    path("api/meetings/", include("apps.meetings.urls")),
-    path("api/common/", include("apps.common.urls")),
-]
-
-if not settings.DEBUG:
-    urlpatterns += [path("api/assistants/", include("apps.assistants.urls"))]
-
-# Swagger urls
-urlpatterns += [
-    path(
-        "swagger<format>/", schema_view.without_ui(cache_timeout=0), name="schema-json"
-    ),
-    path(
-        "swagger/",
-        schema_view.with_ui("swagger", cache_timeout=0),
-        name="schema-swagger-ui",
-    ),
-    path("redoc/", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"),
+    path("", include("apps.website.urls")),
 ]
 
 # Admin urls
 urlpatterns += [
-    path("", redirect_base_to_admin),
     path("admin/", admin.site.urls),
 ]
 
