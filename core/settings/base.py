@@ -21,21 +21,7 @@ DJANGO_APPS = [
 ]
 
 CUSTOM_APPS = [
-    "apps.anons",
-    "apps.applications",
-    "apps.approvals",
-    "apps.assistants",
-    "apps.borrowers",
-    "apps.cards",
-    "apps.chats",
-    "apps.clients",
     "apps.common",
-    "apps.events",
-    "apps.loans",
-    "apps.meetings",
-    "apps.notifications",
-    "apps.payments",
-    "apps.planners",
     "apps.users",
 ]
 
@@ -139,33 +125,6 @@ JAZZMIN_SETTINGS = {
     "login_logo": "brb-titans-logo.png",
 }
 
-
-REST_FRAMEWORK = {
-    # "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
-    # "PAGE_SIZE": 10,
-    "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
-    ),
-    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
-}
-
-SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(hours=1),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
-    "ROTATE_REFRESH_TOKENS": True,
-    "BLACKLIST_AFTER_ROTATION": True,
-    "ALGORITHM": "HS256",
-    "SIGNING_KEY": SECRET_KEY,
-    "AUTH_HEADER_TYPES": ("Bearer",),
-    "USER_ID_FIELD": "id",
-    "USER_ID_CLAIM": "user_id",
-    "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken",),
-    "TOKEN_TYPE_CLAIM": "token_type",
-    "JTI_CLAIM": "jti",
-    "SLIDING_TOKEN_LIFETIME": timedelta(minutes=5),
-    "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=1),
-}
-
 # EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 # EMAIL_HOST = env.str("EMAIL_HOST")
@@ -174,9 +133,3 @@ SIMPLE_JWT = {
 # EMAIL_PORT = env.int("EMAIL_PORT")
 # EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS")
 # EMAIL_USE_SSL = env.bool("EMAIL_USE_SSL")
-
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels.layers.InMemoryChannelLayer",
-    },
-}
