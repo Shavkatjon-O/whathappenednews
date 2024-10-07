@@ -7,8 +7,8 @@ ALLOWED_HOSTS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://www.whathappenednews.uz",
     "http://www.whathappenednews.uz",
+    "https://www.whathappenednews.uz",
 ]
 CSRF_COOKIE_SECURE = True
 
@@ -27,8 +27,8 @@ LOGGER_BOT_TOKEN = env.str("LOGGER_BOT_TOKEN")
 LOGGER_CHAT_ID = env.str("LOGGER_CHAT_ID")
 
 CORS_ALLOWED_ORIGINS = [
-    "https://www.whathappenednews.uz",
     "http://www.whathappenednews.uz",
+    "https://www.whathappenednews.uz",
 ]
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ALLOW_CREDENTIALS = True
